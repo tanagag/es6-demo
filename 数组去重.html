@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+   
+</body>
+</html>
+<script>
+
+	var arr = [5,2,3,2,8,2,8];
+	
+	function unique(arrary){
+		var n = [];
+		for(var i = 0; i < arrary.length; i++){
+			if(n.indexOf(arrary[i])==-1){
+				n.push(arrary[i])
+			}
+		}
+		return n;
+	}
+	
+	console.log(unique(arr));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

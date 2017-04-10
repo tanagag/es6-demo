@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-promise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+   
+</body>
+</html>
+<script>
+	function p1(){
+		return new Promise(function(resolve,reject){
+			setTimeout(function(){
+				console.log("aaa");
+				resolve(111);
+			},2000)
+		});
+	}
+	function p2(){
+		return new Promise(function(resolve,reject){
+			setTimeout(function(){
+				console.log("bbb");
+				reject(222);
+			},2000)
+			
+		});
+	}
+	
+	function p3(){
+		return new Promise(function(resolve,reject){
+			setTimeout(function(){
+				console.log("ccc");
+				resolve(333);
+			},2000)
+			
+		});
+	}
+	
+	function p4(){
+		return new Promise(function(resolve,reject){
+			setTimeout(function(){
+				console.log("ddd");
+				resolve(444);
+			},2000)
+			
+		});
+	}
+	
+	p1().then(p2).then(p3).then(function(data){
+			console.log(data);//只接收最后一个resolve的参数，所以输出333
+		}).catch(function(err){
+			console.log("出错了："+err);
+			if(err=="222"){
+				p3().then(p4);
+			}
+		}
+	)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
