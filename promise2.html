@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-promise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+   
+</body>
+</html>
+<script>
+	var $ajax = {
+		get:function(url,data,success,error){
+			var obj = new XMLHttpRequest();
+			obj.open('GET',url,true);
+			obj.onload = function(){
+				if(obj.readyState == 4 && obj.status == 200 || obj.status == 304){
+					success(obj.responseText)
+				}else{
+					error(obj.status)
+				}
+			}
+			obj.send();
+		},
+		post:function(url,data,success,error){
+			var obj = new XMLHttpRequest();
+			obj.open('POST',url,true);
+			obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  // 添加http头，发送信息至服务器时内容编码类型
+			obj.onload = function(){
+				if(obj.readyState == 4 && obj.status == 200 || obj.status == 304){
+					success(obj.responseText)
+				}else{
+					error(obj.status)
+				}
+			}
+			obj.send(data);
+		}
+	}
+
+	function p1(){
+		return new Promise(function(resolve,reject){
+			$ajax.post('test.txt',{},function(str){
+				alert("成功了："+str)
+			},function(err){
+				//alert("失败了："+err)
+				reject('失败了：'+err)
+			})
+		}).catch(function(err){
+			alert(err)
+		});
+	}
+	
+	p1()
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

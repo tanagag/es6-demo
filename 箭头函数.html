@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class继承</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+   <button id="btn">按钮</button>
+   <div id="box"></div>
+</body>
+</html>
+<script>
+	window.onload = function(){
+		var btn = document.getElementById("btn");
+
+		btn.onclick = ()=>{
+			alert(this)
+		};
+
+		class Person{
+			constructor(username="jack"){
+				this.username = username;
+			}
+			showInfo(){
+				console.log("大家好，我是"+this.username);
+			}
+		}
+
+		class Worker extends Person{
+			constructor(username="jack",age){
+				super(username)
+				this.age=age
+			}
+			showInfo(){
+				console.log("大家好，我是"+this.username+"，年龄："+this.age);
+			}
+		}
+
+		var p1 = new Person('tom',22);
+		var p2 = new Worker('lily',20,'IT');
+		p1.showInfo();
+		p2.showInfo()
+
+
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
