@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	
+	function Point(x)
+	 {
+	 this.x = x;
+	}
+
+	Point.prototype.y = 2;
+
+	var obj = new Point(1);
+	//使用 Object.assign() 深度复制对象，包括其 prototype
+	var copy = Object.assign({ __proto__: obj.__proto__ }, obj); // 输出{x:1,y:2}
+	//仅复制自身属性：
+	//var copy = Object.assign({}, obj); // 输出{x:1}
+	console.log(copy)
+</script>
